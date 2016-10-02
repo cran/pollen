@@ -1,0 +1,14 @@
+8dd205dac7820ccfa91aa2a3a97bf99c *DESCRIPTION
+7c0ee0fe014857337147f3ebffec0b34 *LICENSE
+bd95584a6d83426cba6e04150fab311a *NAMESPACE
+4b753f85995b371c6fb3ee9fdfa95ba7 *R/pollen.R
+0a20e9919a05819cd9c282ac94dbfc32 *R/pollen_count.R
+ff1318b6dfafb41e7bd622ffc23e00e1 *R/pollen_season.R
+5606be7f9126b5eb73564c264577fe37 *README.md
+231546a543eac3ef4bdf7f0ee22b507a *data/pollen_count.rda
+3def9a2cc788b94d24a896782fee9e8f *man/pollen.Rd
+8033fc4d6032a979ea3231b76793c150 *man/pollen_count.Rd
+2863fbfd8f9c773ca6ef936634d8a5e1 *man/pollen_season.Rd
+390201ee21ac709646e5e554557a5475 *tests/testthat.R
+79a24eb1bb31ec482d39f5109db60508 *tests/testthat/test-seasons.R
+5b2f707c4bb24fcbeeb20f19593cfa43 *tests/testthat/test-zeros.R
