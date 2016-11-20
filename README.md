@@ -2,10 +2,20 @@
 Pollen - tools for working with aerobiological data
 ===================================================
 
-[![Build Status](https://travis-ci.org/Nowosad/pollen.png?branch=master)](https://travis-ci.org/Nowosad/pollen)
+[![Build Status](https://travis-ci.org/Nowosad/pollen.png?branch=master)](https://travis-ci.org/Nowosad/pollen) [![CRAN version](http://www.r-pkg.org/badges/version/pollen)](https://cran.r-project.org/package=pollen) [![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/pollen)](https://cran.r-project.org/package=pollen)
+
+`pollen` is a set of functions for working with aerobiological data. It takes care of some of the most widely use aerobiological calculations, such as determination of pollen season limits or replacement of outliers in pollen count data.
 
 Installation
 ------------
+
+Get the released version from CRAN:
+
+``` r
+install.packages("nowosad/pollen")
+```
+
+Or the development version from github:
 
 ``` r
 devtools::install_github("nowosad/pollen")
@@ -30,6 +40,8 @@ head(pollen_count)
 #> 6   Oz 2007-01-06     0     0     0
 ```
 
+### Pollen season calculation
+
 ``` r
 df <- subset(pollen_count, site=='Oz')
 pollen_season(df, value="birch", date="date", method="95")
@@ -46,75 +58,9 @@ pollen_season(df, value="birch", date="date", method="95")
 #> 10 2016 2016-04-06 2016-05-09
 ```
 
-``` r
-df2 <- subset(pollen_count, site=='Atlantis')
-pollen_season(df2, value="alder", date="date", method="95")
-#>    year      start        end
-#> 1  2007       <NA>       <NA>
-#> 2  2008 2008-03-23 2008-04-14
-#> 3  2009 2009-03-16 2009-04-03
-#> 4  2010 2010-03-26 2010-04-07
-#> 5  2011 2011-03-28 2011-04-14
-#> 6  2012 2012-02-13 2012-04-05
-#> 7  2013 2013-02-05 2013-03-16
-#> 8  2014 2014-02-11 2014-04-29
-#> 9  2015 2015-03-19 2015-04-04
-#> 10 2016 2016-03-14 2016-04-23
-```
+More examples could be found in [the first package vignette](https://cdn.rawgit.com/Nowosad/pollen/master/vignettes/intro.html).
 
-``` r
-library('purrr')
-pollen_count %>% split(., .$site) %>% 
-                map(~pollen_season(., value="hazel", date="date", method="95"))
-#> $Atlantis
-#>    year      start        end
-#> 1  2007 2007-01-29 2007-03-19
-#> 2  2008 2008-03-23 2008-04-14
-#> 3  2009 2009-03-15 2009-04-11
-#> 4  2010 2010-03-24 2010-04-14
-#> 5  2011 2011-03-26 2011-04-12
-#> 6  2012 2012-01-21 2012-03-26
-#> 7  2013 2013-02-02 2013-03-29
-#> 8  2014 2014-02-07 2014-04-09
-#> 9  2015 2015-03-01 2015-03-30
-#> 10 2016 2016-03-11 2016-04-06
-#> 
-#> $`Hundred Acre Wood`
-#>    year      start        end
-#> 1  2007 2007-01-29 2007-03-31
-#> 2  2008 2008-03-10 2008-05-10
-#> 3  2009 2009-02-08 2009-03-31
-#> 4  2010 2010-01-24 2010-04-16
-#> 5  2011 2011-03-25 2011-04-16
-#> 6  2012 2012-01-10 2012-03-29
-#> 7  2013 2013-01-24 2013-03-12
-#> 8  2014 2014-03-04 2014-03-31
-#> 9  2015 2015-02-26 2015-03-31
-#> 10 2016 2016-02-06 2016-03-31
-#> 
-#> $Oz
-#>    year      start        end
-#> 1  2007 2007-02-03 2007-03-18
-#> 2  2008 2008-03-10 2008-04-03
-#> 3  2009 2009-02-17 2009-03-26
-#> 4  2010 2010-03-18 2010-04-10
-#> 5  2011 2011-03-27 2011-04-13
-#> 6  2012 2012-01-12 2012-03-14
-#> 7  2013 2013-01-22 2013-03-25
-#> 8  2014 2014-03-05 2014-04-05
-#> 9  2015 2015-03-19 2015-04-02
-#> 10 2016 2016-03-10 2016-03-30
-#> 
-#> $Shire
-#>    year      start        end
-#> 1  2007 2007-01-28 2007-03-24
-#> 2  2008 2008-02-22 2008-04-01
-#> 3  2009 2009-02-03 2009-03-27
-#> 4  2010 2010-02-07 2010-04-07
-#> 5  2011 2011-02-20 2011-04-12
-#> 6  2012 2012-01-10 2012-03-18
-#> 7  2013 2013-01-21 2013-03-02
-#> 8  2014 2014-03-01 2014-03-27
-#> 9  2015 2015-02-19 2015-03-30
-#> 10 2016 2016-01-17 2016-03-28
-```
+Contributions
+-------------
+
+[Feel free to submit issues and enhancement requests.](https://github.com/Nowosad/pollen/issues)
