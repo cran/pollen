@@ -1,10 +1,11 @@
+
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 Pollen - tools for working with aerobiological data
 ===================================================
 
-[![Build Status](https://travis-ci.org/Nowosad/pollen.png?branch=master)](https://travis-ci.org/Nowosad/pollen) [![CRAN version](http://www.r-pkg.org/badges/version/pollen)](https://cran.r-project.org/package=pollen) [![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/pollen)](https://cran.r-project.org/package=pollen)
+[![Build Status](https://travis-ci.org/Nowosad/pollen.png?branch=master)](https://travis-ci.org/Nowosad/pollen) [![codecov](https://codecov.io/gh/Nowosad/pollen/branch/master/graph/badge.svg)](https://codecov.io/gh/Nowosad/pollen) [![CRAN version](http://www.r-pkg.org/badges/version/pollen)](https://cran.r-project.org/package=pollen) [![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/pollen)](https://cran.r-project.org/package=pollen)
 
-`pollen` is a set of functions for working with aerobiological data. It takes care of some of the most widely use aerobiological calculations, such as determination of pollen season limits or replacement of outliers in pollen count data.
+`pollen` is a set of functions for working with aerobiological data. It takes care of some of the most widely use aerobiological calculations, such as determination of pollen season limits or replacement of outliers in a pollen count data.
 
 Installation
 ------------
@@ -12,7 +13,7 @@ Installation
 Get the released version from CRAN:
 
 ``` r
-install.packages("nowosad/pollen")
+install.packages("pollen")
 ```
 
 Or the development version from github:
@@ -25,11 +26,11 @@ Examples
 --------
 
 ``` r
-library('pollen')
+library(pollen)
 ```
 
 ``` r
-data('pollen_count')
+data("pollen_count")
 head(pollen_count)
 #>   site       date alder birch hazel
 #> 1   Oz 2007-01-01     0     0     0
@@ -43,8 +44,8 @@ head(pollen_count)
 ### Pollen season calculation
 
 ``` r
-df <- subset(pollen_count, site=='Oz')
-pollen_season(df, value="birch", date="date", method="95")
+df <- subset(pollen_count, site == "Oz")
+pollen_season(value = df$birch, date = df$date, method = "95")
 #>    year      start        end
 #> 1  2007 2007-03-31 2007-05-03
 #> 2  2008 2008-04-19 2008-05-07
