@@ -1,7 +1,7 @@
 Package: pollen
 Type: Package
 Title: Analysis of Aerobiological Data
-Version: 0.70.0
+Version: 0.71.0
 Authors@R: person("Jakub", "Nowosad", 
     email = "nowosad.jakub@gmail.com",
     role = c("aut", "cre"),
@@ -17,10 +17,10 @@ BugReports: https://github.com/Nowosad/pollen/issues
 License: MIT + file LICENSE
 LazyData: TRUE
 VignetteBuilder: knitr
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.0
 NeedsCompilation: no
-Packaged: 2018-02-25 22:27:21 UTC; jn
+Packaged: 2018-10-07 07:39:24 UTC; jn
 Author: Jakub Nowosad [aut, cre] (<https://orcid.org/0000-0002-1057-3721>)
 Maintainer: Jakub Nowosad <nowosad.jakub@gmail.com>
 Repository: CRAN
-Date/Publication: 2018-02-26 00:01:05 UTC
+Date/Publication: 2018-10-07 07:50:03 UTC
