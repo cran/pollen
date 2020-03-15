@@ -7,34 +7,54 @@
 #' @param tmin daily minimum temperature
 #' @param tbase base temperature
 #' @param tbase_max maximum base temperature
+#' @param type either "B", "C", or "D". The default is "C". Type "B" - The heat units are calculated based on the difference between the mean daily temperature and the threshold (`tbase`). In the case when the value of `tmin` is lower than `tbase`, then it is replaced by `tbase`. Type `"C"` - same as type `"B"` and when the value of `tmax` is larger than `tbase_max`, then it is replaced by `tbase_max`. Type `"D"`- same as type `"B"` and when the value of `tmax` is larger than `tbase_max`, then no heat units are added.
 #'
 #' @return a numeric vector with GDD values
 #'
-#' @keywords meteo, temperature
+#' @references Baskerville, G., & Emin, P. (1969). Rapid Estimation of Heat Accumulation from Maximum and Minimum Temperatures. Ecology, 50(3), 514-517. doi:10.2307/1933912
 #'
 #' @export
 #'
 #' @examples
 #' set.seed(25)
-#' df <- data.frame(tmax=runif(100, 6, 10), tmin=runif(100, 4,6))
+#' df <- data.frame(tmax = runif(100, 6, 10), tmin = runif(100, 4, 6))
 #'
 #' gdd(tmax = df$tmax, tmin = df$tmin, tbase = 5, tbase_max = 30)
 #'
 #'
-gdd <- function(tmax, tmin, tbase, tbase_max) {
-  adjust_for_tbase <- function(x, tbase) {
-    ifelse(test = x < tbase, yes = tbase, no = x)
+gdd <- function(tmax, tmin, tbase, tbase_max, type = "C") {
+  
+  if (!type %in% c("A", "B", "C", "D")){
+    stop('The case argument must be either "A", "B", "C", or "D"', call. = FALSE)
   }
-  adjust_for_tbase_max <- function(x, tbase_max) {
-    ifelse(test = x > tbase_max, yes = tbase_max, no = x)
+  
+  # if (type == "A"){
+  #   tbase = 0
+  # }
+  
+  if (type %in% c("A", "B", "C", "D")){
+    tmax <- adjust_for_tbase(tmax, tbase)
+    tmin <- adjust_for_tbase(tmin, tbase)
+  }
+  
+  if (type %in% c("C")){
+    tmax <- adjust_for_tbase_max(tmax, tbase_max)
+    tmin <- adjust_for_tbase_max(tmin, tbase_max)
+  }
+  
+  if (type == "D"){
+    gdd_temp <- ifelse(tmax > tbase_max, yes = 0, no = (tmax + tmin) / 2 - tbase)
+  } else if (type %in% c("A", "B", "C")){
+    gdd_temp <- (tmax + tmin) / 2 - tbase
   }
 
-  tmax_adjusted <- adjust_for_tbase(tmax, tbase)
-  tmin_adjusted <- adjust_for_tbase(tmin, tbase)
+  return(cumsum(gdd_temp))
+}
 
-  tmax_adjusted <- adjust_for_tbase_max(tmax_adjusted, tbase_max)
-  tmin_adjusted <- adjust_for_tbase_max(tmin_adjusted, tbase_max)
+adjust_for_tbase <- function(x, tbase) {
+  ifelse(test = x < tbase, yes = tbase, no = x)
+}
 
-  gdd_temp <- (tmax_adjusted + tmin_adjusted) / 2 - tbase
-  cumsum(gdd_temp)
+adjust_for_tbase_max <- function(x, tbase_max) {
+  ifelse(test = x > tbase_max, yes = tbase_max, no = x)
 }

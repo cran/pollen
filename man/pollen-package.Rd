@@ -9,18 +9,18 @@
 Supports analysis of aerobiological data. 
     Available features include determination of pollen season limits, 
     replacement of outliers (Kasprzyk and Walanus (2014) <doi:10.1007/s10453-014-9332-8>),
-    and calculation of growing degree days.
+    and calculation of growing degree days (Baskerville and Emin (1969) <doi:10.2307/1933912>).
 }
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/Nowosad/pollen}
+  \item \url{https://nowosad.github.io/pollen/}
   \item Report bugs at \url{https://github.com/Nowosad/pollen/issues}
 }
 
 }
 \author{
-\strong{Maintainer}: Jakub Nowosad \email{nowosad.jakub@gmail.com} (0000-0002-1057-3721)
+\strong{Maintainer}: Jakub Nowosad \email{nowosad.jakub@gmail.com} (\href{https://orcid.org/0000-0002-1057-3721}{ORCID})
 
 }
 \keyword{internal}
