@@ -14,6 +14,8 @@
 #' @references Baskerville, G., & Emin, P. (1969). Rapid Estimation of Heat Accumulation from Maximum and Minimum Temperatures. Ecology, 50(3), 514-517. doi:10.2307/1933912
 #'
 #' @export
+#' 
+#' @seealso [base_temp()] for determining a base temperature
 #'
 #' @examples
 #' set.seed(25)
@@ -25,7 +27,7 @@
 gdd <- function(tmax, tmin, tbase, tbase_max, type = "C") {
   
   if (!type %in% c("A", "B", "C", "D")){
-    stop('The case argument must be either "A", "B", "C", or "D"', call. = FALSE)
+    stop('The type argument must be either "A", "B", "C", or "D"', call. = FALSE)
   }
   
   # if (type == "A"){

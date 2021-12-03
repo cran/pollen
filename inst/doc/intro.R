@@ -38,7 +38,7 @@ new_df <- outliers_replacer(value = df$alder, date = df$date)
 identical(df, new_df)
 
 ## -----------------------------------------------------------------------------
-library("purrr")
+library(purrr)
 new_pollen_count <- pollen_count %>%
   split(., .$site) %>%
   map_dfr(~outliers_replacer(value = .$hazel, date = .$date, threshold = 4))
