@@ -1,22 +1,22 @@
-## ---- echo = FALSE, message = FALSE-------------------------------------------
+## ----echo = FALSE, message = FALSE--------------------------------------------
 knitr::opts_chunk$set(collapse = T, comment = "#>")
 
-## ---- lib, eval=TRUE----------------------------------------------------------
+## ----lib, eval=TRUE-----------------------------------------------------------
 library(pollen)
 
-## ---- dat, eval=TRUE----------------------------------------------------------
+## ----dat, eval=TRUE-----------------------------------------------------------
 data("pollen_count")
 head(pollen_count)
 
-## ---- df, eval=TRUE-----------------------------------------------------------
+## ----df, eval=TRUE------------------------------------------------------------
 df <- subset(pollen_count, site == "Oz")
 pollen_season(value = df$birch, date = df$date, method = "95")
 
-## ---- df2, eval=TRUE----------------------------------------------------------
+## ----df2, eval=TRUE-----------------------------------------------------------
 df2 <- subset(pollen_count, site == "Atlantis")
 pollen_season(value = df2$alder, date = df2$date, method = "95")
 
-## ---- purrr, eval=TRUE--------------------------------------------------------
+## ----purrr, eval=TRUE---------------------------------------------------------
 library(purrr)
 pollen_count %>%
   split(., .$site) %>%

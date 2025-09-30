@@ -1,7 +1,7 @@
 Package: pollen
 Type: Package
 Title: Analysis of Aerobiological Data
-Version: 0.82.0
+Version: 0.83.0
 Authors@R: person("Jakub", "Nowosad", 
     email = "nowosad.jakub@gmail.com",
     role = c("aut", "cre"),
@@ -15,15 +15,17 @@ Description: Supports analysis of aerobiological data.
 Depends: R (>= 2.10)
 Imports: lubridate, purrr, dplyr
 Suggests: covr, ggplot2, knitr, tidyr, rmarkdown, testthat
-URL: https://nowosad.github.io/pollen/
+URL: https://jakubnowosad.com/pollen/
 BugReports: https://github.com/Nowosad/pollen/issues
 License: MIT + file LICENSE
 LazyData: TRUE
 VignetteBuilder: knitr
-RoxygenNote: 7.1.2
+RoxygenNote: 7.3.2
+Encoding: UTF-8
 NeedsCompilation: no
-Packaged: 2021-12-03 11:19:30 UTC; jn
-Author: Jakub Nowosad [aut, cre] (<https://orcid.org/0000-0002-1057-3721>)
+Packaged: 2025-09-30 08:43:14 UTC; jn
+Author: Jakub Nowosad [aut, cre] (ORCID:
+    <https://orcid.org/0000-0002-1057-3721>)
 Maintainer: Jakub Nowosad <nowosad.jakub@gmail.com>
 Repository: CRAN
-Date/Publication: 2021-12-03 12:20:02 UTC
+Date/Publication: 2025-09-30 09:00:07 UTC
